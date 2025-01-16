@@ -75,5 +75,21 @@ test('throws error for negative number with custom delimiter', () => {
 test('throws error for negative number with mixed delimiters', () => {
   expect(() => stringCalculator('//;\n1;-2\n3')).toThrow('negatives not allowed: -2');
 });
+
+test('ignores numbers greater than 1000', () => {
+  expect(stringCalculator('2,1001')).toBe(2); // 1001 should be ignored
+});
+
+test('handles large numbers by ignoring them', () => {
+  expect(stringCalculator('2,1000,1001')).toBe(1002); // 1001 should be ignored
+});
+
+test('ignores numbers greater than 1000 with newlines', () => {
+  expect(stringCalculator('2\n1001')).toBe(2); // 1001 should be ignored
+});
+
+test('ignores numbers greater than 1000 with mixed delimiters', () => {
+  expect(stringCalculator('//;\n2;1001')).toBe(2); // 1001 should be ignored
+});
   
 });

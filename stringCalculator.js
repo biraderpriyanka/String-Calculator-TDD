@@ -36,15 +36,13 @@ function stringCalculator(numbers){
       throw new Error("negatives not allowed: " + negatives.join(", "));
     }
   
-   // Split the string by commas, trim each part, convert to integer, and sum them up
-   return normalizedNumbers.split(",").reduce((sum, num) => {
-     const parsedNum = parseInt(num.trim(), 10);
-     if (isNaN(parsedNum)) throw new Error("Invalid input: contains non-numeric values");
-     return sum + parsedNum;
-   }, 0);
-  
-  // Default case for commas and newlines
-  return numbers.split(/,|\n/).reduce((sum, num) => sum + parseInt(num, 10), 0);
+  // Filter out numbers greater than 1000 and sum the rest
+  const filteredNumbers = numberArray
+    .map(num => parseInt(num.trim(), 10))
+    .filter(num => num <= 1000);
+
+  // Sum the valid numbers
+  return filteredNumbers.reduce((sum, num) => sum + num, 0);
 }
 
 module.exports  = stringCalculator
