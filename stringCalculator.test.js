@@ -19,9 +19,16 @@ describe('String Calculator', () => {
     expect(stringCalculator('1,2,3')).toBe(6);
   });
 
-  
- test('should return the sum of numbers with comma and newline delimiters', () => {
-    expect(stringCalculator('1\n2,3')).toBe(6);  // 1 + 2 + 3 = 6
+  test('handles multiple numbers separated by newlines', () => {
+    expect(stringCalculator('1\n2\n3')).toBe(6);
+  })
+
+  test('handles numbers with mixed commas and newlines', () => {
+    expect(stringCalculator('1\n2,3')).toBe(6);
+  })
+
+  test('handles input with leading and trailing spaces', () => {
+    expect(stringCalculator('  1 , 2  \n 3 ')).toBe(6);
   });
   
 });
