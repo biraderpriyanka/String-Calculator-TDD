@@ -12,4 +12,11 @@ describe('String Calculator', () => {
     expect(stringCalculator('5')).toBe(5);
   });
   
+    // Handle two Numbers
+  test('should return the sum of two numbers separated by a comma', () => {
+    expect(stringCalculator('1,2')).toBe(3);
+    expect(stringCalculator('4,6')).toBe(10);
+    expect(stringCalculator('1,2,3')).toBe(6);
+  });
+  
 });
