@@ -30,5 +30,34 @@ describe('String Calculator', () => {
   test('handles input with leading and trailing spaces', () => {
     expect(stringCalculator('  1 , 2  \n 3 ')).toBe(6);
   });
+
+  test('handles input with leading and trailing spaces', () => {
+    expect(stringCalculator('  1 , 2  \n 3 ')).toBe(6);
+  });
+  
+  // Custom delimiter tests
+  test('handles custom delimiter defined at the start', () => {
+    expect(stringCalculator('//;\n1;2')).toBe(3); // Custom delimiter is ';'
+  });
+  
+  test('handles custom delimiter with multiple numbers', () => {
+    expect(stringCalculator('//;\n1;2;3')).toBe(6); // Custom delimiter is ';'
+  });
+  
+  test('handles custom delimiter with newlines', () => {
+    expect(stringCalculator('//;\n1;2\n3')).toBe(6); // Custom delimiter is ';', mixed with newlines
+  });
+  
+  test('handles custom delimiter wrapped in square brackets', () => {
+    expect(stringCalculator('//[;]\n1;2')).toBe(3); // Custom delimiter is ';' inside square brackets
+  });
+  
+  test('handles custom delimiter and default delimiters', () => {
+    expect(stringCalculator('//;\n1;2\n3')).toBe(6); // Custom delimiter is ';', with newlines as well
+  });
+  
+  test('handles custom delimiter with spaces around the numbers', () => {
+    expect(stringCalculator('//;\n  1 ; 2 \n3 ')).toBe(6); // Custom delimiter is ';'
+  });
   
 });
