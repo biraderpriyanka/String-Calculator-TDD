@@ -1,0 +1,15 @@
+{
+  "name": "string-calculator-tdd",
+  "version": "1.0.0",
+  "description": "\"Implementation of the String Calculator TDD Kata using Node.js and Jest. A hands-on project for practicing Test-Driven Development (TDD) principles.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
