@@ -25,10 +25,21 @@ function stringCalculator(numbers){
   }
    // Normalize the string by replacing newlines with commas
    const normalizedNumbers = numbers.replace(new RegExp(`\\n|${delimiter}`, 'g'), ','); 
+   // Split the string by commas
+  const numberArray = normalizedNumbers.split(",");
+
+     // Check for negative numbers and store them
+  const negatives = numberArray.filter(num => parseInt(num.trim(), 10) < 0);
+
+    // If there are any negative numbers, throw an error with the message
+    if (negatives.length > 0) {
+      throw new Error("negatives not allowed: " + negatives.join(", "));
+    }
   
    // Split the string by commas, trim each part, convert to integer, and sum them up
    return normalizedNumbers.split(",").reduce((sum, num) => {
      const parsedNum = parseInt(num.trim(), 10);
+     if (isNaN(parsedNum)) throw new Error("Invalid input: contains non-numeric values");
      return sum + parsedNum;
    }, 0);
   

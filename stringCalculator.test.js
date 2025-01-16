@@ -59,5 +59,21 @@ describe('String Calculator', () => {
   test('handles custom delimiter with spaces around the numbers', () => {
     expect(stringCalculator('//;\n  1 ; 2 \n3 ')).toBe(6); // Custom delimiter is ';'
   });
+  // Negative number tests
+test('throws error for a single negative number', () => {
+  expect(() => stringCalculator('1,-2')).toThrow('negatives not allowed: -2');
+});
+
+test('throws error for multiple negative numbers', () => {
+  expect(() => stringCalculator('-1,-2,-3')).toThrow('negatives not allowed: -1, -2, -3');
+});
+
+test('throws error for negative number with custom delimiter', () => {
+  expect(() => stringCalculator('//;\n1;-2')).toThrow('negatives not allowed: -2');
+});
+
+test('throws error for negative number with mixed delimiters', () => {
+  expect(() => stringCalculator('//;\n1;-2\n3')).toThrow('negatives not allowed: -2');
+});
   
 });
