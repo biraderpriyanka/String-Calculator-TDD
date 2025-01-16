@@ -4,7 +4,7 @@
   "description": "\"Implementation of the String Calculator TDD Kata using Node.js and Jest. A hands-on project for practicing Test-Driven Development (TDD) principles.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
